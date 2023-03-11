@@ -6,7 +6,7 @@ import 'package:omnipro_test/core/helpers/base_screen.dart';
 import 'package:omnipro_test/features/home/presentation/cubit/home_cubit.dart';
 import 'package:omnipro_test/features/home/presentation/widgets/home_header.dart';
 import 'package:omnipro_test/features/home/presentation/widgets/photos_list.dart';
-import 'package:omnipro_test/features/home/presentation/pages/data_error_page.dart';
+import 'package:omnipro_test/features/home/presentation/widgets/data_error_page.dart';
 
 class HomePage extends BaseScreen<HomeState, HomeCubit> {
   const HomePage({super.key});
@@ -33,7 +33,7 @@ class HomePage extends BaseScreen<HomeState, HomeCubit> {
                 photosLength: state.photos.length,
               ),
               (!state.loadingPage && state.dataError)
-                  ? DataErrorScreen(
+                  ? DataErrorPage(
                       onRetry: () async => bloc.onLoadPage(),
                     )
                   : PhotosList(
