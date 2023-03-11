@@ -14,9 +14,6 @@ abstract class HomeDataSource {
 class HomeDataSourceImpl extends HomeDataSource {
   @override
   Future<RetrieveElementsResponse> retrieveApiPhotos({required params}) async {
-    // await Future.delayed(const Duration(seconds: 3), () {
-    //   throw HomeExeption(message: "Retrieve api elements error");
-    // });
     try {
       ServerResponse serverResponse = await CenterApi.get(
         urlSpecific: Server.retrieveApiPhotosEndpoint(
