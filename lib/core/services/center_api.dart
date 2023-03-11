@@ -5,13 +5,13 @@ import 'package:omnipro_test/core/models/server_response.dart';
 class CenterApi {
   static const String connectionError = "Error en la conexión";
 
-  Map<String, String> get _headers {
+  static Map<String, String> get _headers {
     return {
       "Content-Type": "application/json",
     };
   }
 
-  Future<ServerResponse> get({required String urlSpecific}) async {
+  static Future<ServerResponse> get({required String urlSpecific}) async {
     try {
       final response =
           await http.get(Uri.parse(urlSpecific), headers: _headers);
@@ -40,7 +40,7 @@ class CenterApi {
     }
   }
 
-  Future<ServerResponse> post(
+  static Future<ServerResponse> post(
       {required dynamic data,
       required String urlSpecific,
       bool nullHeader = false}) async {

@@ -3,7 +3,7 @@ import 'package:omnipro_test/features/home/presentation/cubit/home_cubit.dart';
 import 'package:omnipro_test/features/home/data/datasources/home_data_source.dart';
 import 'package:omnipro_test/features/home/domain/repositories/home_repository.dart';
 import 'package:omnipro_test/features/home/data/repositories/home_repository_impl.dart';
-import 'package:omnipro_test/features/home/domain/usecases/retrieve_api_elements.dart';
+import 'package:omnipro_test/features/home/domain/usecases/retrieve_api_photos_use_case.dart';
 
 final GetIt sl = GetIt.instance;
 
@@ -15,11 +15,11 @@ init() async {
 }
 
 void registerBlocs() {
-  sl.registerFactory(() => HomeCubit(getApiElementsUseCase: sl()));
+  sl.registerFactory(() => HomeCubit(getApiPhotosUseCase: sl()));
 }
 
 void registerUseCases() {
-  sl.registerLazySingleton(() => GetApiElementsUseCase(homeRepository: sl()));
+  sl.registerLazySingleton(() => GetApiPhotosUseCase(homeRepository: sl()));
 }
 
 void registerRepositories() {

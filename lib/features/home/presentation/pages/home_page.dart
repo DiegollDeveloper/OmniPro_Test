@@ -4,6 +4,7 @@ import 'package:omnipro_test/core/utils/app_colors.dart';
 import 'package:omnipro_test/core/utils/screen_size.dart';
 import 'package:omnipro_test/core/helpers/base_screen.dart';
 import 'package:omnipro_test/features/home/presentation/cubit/home_cubit.dart';
+import 'package:omnipro_test/features/home/presentation/widgets/photos_list.dart';
 import 'package:omnipro_test/features/home/presentation/pages/data_error_page.dart';
 
 class HomePage extends BaseScreen<HomeState, HomeCubit> {
@@ -22,20 +23,37 @@ class HomePage extends BaseScreen<HomeState, HomeCubit> {
             ? DataErrorScreen(
                 onRetry: () async => bloc.onLoadPage(),
               )
-            : SingleChildScrollView(
-                child: Padding(
-                  padding: EdgeInsets.only(
-                    top: ScreenSize.height(context) * 0.1,
-                    bottom: ScreenSize.height(context) * 0.05,
-                    left: ScreenSize.width(context) * 0.1,
-                    right: ScreenSize.width(context) * 0.1,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      Text("Home"),
-                    ],
-                  ),
+            : Container(
+                padding: EdgeInsets.only(
+                  top: ScreenSize.height(context) * 0.1,
+                  bottom: ScreenSize.height(context) * 0.05,
+                  left: ScreenSize.width(context) * 0.1,
+                  right: ScreenSize.width(context) * 0.1,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Lista de fotos",
+                          style: TextStyle(
+                            color: AppColors.primary,
+                            fontSize: ScreenSize.width(context) * 0.06,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                    PhotosList(
+                      loading: state.loadingPage,
+                      photos: state.photos,
+                      refreshController: state.refreshController,
+                      onLoading: () async => bloc.getApiPhotos(),
+                    ),
+                  ],
                 ),
               ),
       ),

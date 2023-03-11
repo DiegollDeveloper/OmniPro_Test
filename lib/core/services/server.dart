@@ -7,6 +7,6 @@ class Server {
   static final String _serverPhotos = serverUrl + dotenv.env["server_photos"]!;
 
   // Full url
-  static String registerPassengerEndpoint(String filter) =>
+  static String retrieveApiPhotosEndpoint(String filter) =>
       "$_serverPhotos$filter";
 }
