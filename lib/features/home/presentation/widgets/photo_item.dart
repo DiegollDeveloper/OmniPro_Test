@@ -27,11 +27,16 @@ class PhotoItem extends StatelessWidget {
       child: Row(
         children: [
           ClipOval(
-            child: Image.network(
-              photoUrl,
-              fit: BoxFit.fill,
+            child: FadeInImage.assetNetwork(
+              image: photoUrl,
+              placeholder: 'assets/gifs/loading.gif',
               width: 50,
               height: 50,
+              imageErrorBuilder: (context, error, stackTrace) => const Icon(
+                Icons.image_not_supported_outlined,
+                size: 50,
+                color: Colors.grey,
+              ),
             ),
           ),
           const SizedBox(width: 10),
