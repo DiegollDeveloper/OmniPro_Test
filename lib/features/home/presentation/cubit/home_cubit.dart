@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:omnipro_test/features/home/data/models/api_photo.dart';
-import 'package:omnipro_test/features/home/data/models/retrieve_elements_body.dart';
+import 'package:omnipro_test/features/home/data/models/retrieve_photos_body.dart';
 import 'package:omnipro_test/features/home/domain/usecases/retrieve_api_photos_use_case.dart';
 part 'home_state.dart';
 
@@ -17,14 +17,14 @@ class HomeCubit extends Cubit<HomeState> {
       loadingPage: true,
       dataError: false,
     ));
-    await getApiPhotos();
+    await getApiPhotos(true);
     emit(state.copyWith(loadingPage: false));
   }
 
-  Future<void> getApiPhotos() async {
+  Future<void> getApiPhotos(bool fromLoadPage) async {
     emit(state.copyWith(loadingNewPhotos: true));
     final result = await getApiPhotosUseCase!(
-      RetrieveElementsBody(
+      RetrievePhotosBody(
         firstElement: state.photos.length + 1,
         elementsToRetrieve: 10,
       ),
@@ -32,7 +32,7 @@ class HomeCubit extends Cubit<HomeState> {
     emit(state.copyWith(loadingNewPhotos: false));
     result.fold(
       (l) {
-        emit(state.copyWith(dataError: true));
+        emit(state.copyWith(dataError: fromLoadPage));
         state.refreshController.loadFailed();
       },
       (r) {

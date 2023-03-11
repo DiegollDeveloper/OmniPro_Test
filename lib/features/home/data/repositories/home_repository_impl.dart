@@ -3,7 +3,7 @@ import 'package:omnipro_test/core/errors/failures.dart';
 import 'package:omnipro_test/core/errors/exceptions.dart';
 import 'package:omnipro_test/features/home/data/datasources/home_data_source.dart';
 import 'package:omnipro_test/features/home/domain/repositories/home_repository.dart';
-import 'package:omnipro_test/features/home/data/models/retrieve_elements_response.dart';
+import 'package:omnipro_test/features/home/data/models/retrieve_photos_response.dart';
 
 class HomeRepositoryImpl extends HomeRepository {
   final HomeDataSource homeDataSource;
@@ -11,7 +11,7 @@ class HomeRepositoryImpl extends HomeRepository {
   HomeRepositoryImpl({required this.homeDataSource});
 
   @override
-  Future<Either<Failure, RetrieveElementsResponse>> retrieveApiPhotos(
+  Future<Either<Failure, RetrievePhotosResponse>> retrieveApiPhotos(
       {required params}) async {
     try {
       final result = await homeDataSource.retrieveApiPhotos(params: params);

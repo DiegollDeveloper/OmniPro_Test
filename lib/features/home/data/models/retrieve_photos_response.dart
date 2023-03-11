@@ -1,14 +1,14 @@
 import 'package:omnipro_test/features/home/data/models/api_photo.dart';
 
-class RetrieveElementsResponse {
+class RetrievePhotosResponse {
   List<ApiPhoto> apiPhotos;
 
-  RetrieveElementsResponse({
+  RetrievePhotosResponse({
     required this.apiPhotos,
   });
 
-  factory RetrieveElementsResponse.fromJson(List json) {
-    return RetrieveElementsResponse(
+  factory RetrievePhotosResponse.fromJson(List json) {
+    return RetrievePhotosResponse(
       apiPhotos: json.map((jsonPhoto) => ApiPhoto.fromJson(jsonPhoto)).toList(),
     );
   }

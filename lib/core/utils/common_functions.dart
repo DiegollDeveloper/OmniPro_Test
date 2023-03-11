@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:collection/collection.dart';
 
 class CommonFunctions {
   static String getRetrieveApiPhotosFilter({
@@ -28,5 +29,10 @@ class CommonFunctions {
         900: Color.fromRGBO(color.red, color.green, color.blue, 1),
       },
     );
+  }
+
+  static bool compareLists(List a, List b) {
+    Function eq = const ListEquality().equals;
+    return eq(a, b);
   }
 }

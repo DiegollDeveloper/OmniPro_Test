@@ -1,8 +1,8 @@
-class RetrieveElementsBody {
+class RetrievePhotosBody {
   int firstElement;
   int elementsToRetrieve;
 
-  RetrieveElementsBody({
+  RetrievePhotosBody({
     required this.firstElement,
     required this.elementsToRetrieve,
   });

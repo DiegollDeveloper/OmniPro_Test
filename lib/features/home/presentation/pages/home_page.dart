@@ -39,7 +39,7 @@ class HomePage extends BaseScreen<HomeState, HomeCubit> {
                   : PhotosList(
                       photos: state.photos,
                       refreshController: state.refreshController,
-                      onLoading: () async => bloc.getApiPhotos(),
+                      onLoading: () async => bloc.getApiPhotos(false),
                     ),
             ],
           ),
