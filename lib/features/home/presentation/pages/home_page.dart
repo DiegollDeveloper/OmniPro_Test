@@ -5,6 +5,7 @@ import 'package:omnipro_test/core/utils/screen_size.dart';
 import 'package:omnipro_test/core/helpers/base_screen.dart';
 import 'package:omnipro_test/features/home/presentation/cubit/home_cubit.dart';
 import 'package:omnipro_test/features/home/presentation/widgets/photos_list.dart';
+import 'package:omnipro_test/features/home/presentation/widgets/home_header.dart';
 import 'package:omnipro_test/features/home/presentation/pages/data_error_page.dart';
 
 class HomePage extends BaseScreen<HomeState, HomeCubit> {
@@ -19,43 +20,30 @@ class HomePage extends BaseScreen<HomeState, HomeCubit> {
       backgroundColor: AppColors.background,
       body: WillPopScope(
         onWillPop: () async => false,
-        child: (state.dataError)
-            ? DataErrorScreen(
-                onRetry: () async => bloc.onLoadPage(),
-              )
-            : Container(
-                padding: EdgeInsets.only(
-                  top: ScreenSize.height(context) * 0.1,
-                  bottom: ScreenSize.height(context) * 0.05,
-                  left: ScreenSize.width(context) * 0.1,
-                  right: ScreenSize.width(context) * 0.1,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Lista de fotos",
-                          style: TextStyle(
-                            color: AppColors.primary,
-                            fontSize: ScreenSize.width(context) * 0.06,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    PhotosList(
-                      loading: state.loadingPage,
+        child: Container(
+          padding: EdgeInsets.only(
+            left: ScreenSize.width(context) * 0.05,
+            right: ScreenSize.width(context) * 0.05,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              HomeHeader(
+                loadingPage: state.loadingPage,
+                photosLength: state.photos.length,
+              ),
+              (!state.loadingPage && state.dataError)
+                  ? DataErrorScreen(
+                      onRetry: () async => bloc.onLoadPage(),
+                    )
+                  : PhotosList(
                       photos: state.photos,
                       refreshController: state.refreshController,
                       onLoading: () async => bloc.getApiPhotos(),
                     ),
-                  ],
-                ),
-              ),
+            ],
+          ),
+        ),
       ),
     );
   }

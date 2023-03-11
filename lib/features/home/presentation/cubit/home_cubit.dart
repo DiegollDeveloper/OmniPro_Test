@@ -13,7 +13,10 @@ class HomeCubit extends Cubit<HomeState> {
   }) : super(HomeState.initial());
 
   Future<void> onLoadPage() async {
-    emit(state.copyWith(loadingPage: true));
+    emit(state.copyWith(
+      loadingPage: true,
+      dataError: false,
+    ));
     await getApiPhotos();
     emit(state.copyWith(loadingPage: false));
   }
@@ -28,7 +31,10 @@ class HomeCubit extends Cubit<HomeState> {
     );
     emit(state.copyWith(loadingNewPhotos: false));
     result.fold(
-      (l) => state.refreshController.loadFailed(),
+      (l) {
+        emit(state.copyWith(dataError: true));
+        state.refreshController.loadFailed();
+      },
       (r) {
         state.photos.addAll(r.apiPhotos);
         emit(state.copyWith());

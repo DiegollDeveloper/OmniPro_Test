@@ -13,41 +13,43 @@ class DataErrorScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.symmetric(
-        horizontal: ScreenSize.width(context) * 0.1,
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          RichText(
-            text: TextSpan(
-              style: TextStyle(
-                color: AppColors.primary,
-                fontSize: ScreenSize.width(context) * 0.046,
-                letterSpacing: 0.5,
-              ),
-              children: const [
-                TextSpan(
-                  text: "Ocurrió un error al obtener los datos de usuario. ",
+    return Expanded(
+      child: Container(
+        width: double.infinity,
+        padding: EdgeInsets.symmetric(
+          horizontal: ScreenSize.width(context) * 0.1,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            RichText(
+              text: TextSpan(
+                style: TextStyle(
+                  color: AppColors.contrast,
+                  fontSize: ScreenSize.width(context) * 0.046,
+                  letterSpacing: 0.5,
                 ),
-                TextSpan(
-                  text: "Verifica tu conexión e intenta nuevamente.",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
+                children: const [
+                  TextSpan(
+                    text: "Ocurrió un error al obtener los datos de usuario. ",
                   ),
-                ),
-              ],
+                  TextSpan(
+                    text: "Verifica tu conexión e intenta nuevamente.",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-          const SizedBox(height: 25),
-          CustomButton(
-            onTap: () => onRetry(),
-            loading: false,
-            text: "INTENTAR NUEVAMENTE",
-          )
-        ],
+            const SizedBox(height: 25),
+            CustomButton(
+              onTap: () => onRetry(),
+              loading: false,
+              text: "INTENTAR NUEVAMENTE",
+            )
+          ],
+        ),
       ),
     );
   }

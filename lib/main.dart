@@ -3,6 +3,7 @@ import 'injection_container.dart' as di;
 import 'package:omnipro_test/navigator.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:omnipro_test/core/utils/app_colors.dart';
+import 'package:omnipro_test/core/utils/common_functions.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       navigatorKey: AppNavigator.navigatorKey,
       theme: ThemeData(
-        primarySwatch: AppColors.primary,
+        primarySwatch:
+            CommonFunctions.getMaterialColorFromColor(AppColors.primary),
       ),
       onGenerateRoute: AppNavigator.generateRoute,
       locale: const Locale('es', 'ES'),
