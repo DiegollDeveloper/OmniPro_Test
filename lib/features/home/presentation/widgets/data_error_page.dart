@@ -3,10 +3,10 @@ import 'package:omnipro_test/core/utils/app_colors.dart';
 import 'package:omnipro_test/core/utils/screen_size.dart';
 import 'package:omnipro_test/core/widgets/custom_button.dart';
 
-class DataErrorScreen extends StatelessWidget {
+class DataErrorPage extends StatelessWidget {
   final Function onRetry;
 
-  const DataErrorScreen({
+  const DataErrorPage({
     Key? key,
     required this.onRetry,
   }) : super(key: key);
