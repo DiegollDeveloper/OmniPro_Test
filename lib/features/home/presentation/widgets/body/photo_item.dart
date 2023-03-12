@@ -32,10 +32,10 @@ class PhotoItem extends StatelessWidget {
               placeholder: 'assets/gifs/loading.gif',
               width: 50,
               height: 50,
-              imageErrorBuilder: (context, error, stackTrace) => const Icon(
+              imageErrorBuilder: (context, error, stackTrace) => Icon(
                 Icons.image_not_supported_outlined,
                 size: 50,
-                color: Colors.grey,
+                color: AppColors.contrast,
               ),
             ),
           ),

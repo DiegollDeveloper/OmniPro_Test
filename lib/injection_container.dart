@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:omnipro_test/features/home/presentation/cubit/home_cubit.dart';
 import 'package:omnipro_test/features/home/data/datasources/home_data_source.dart';
 import 'package:omnipro_test/features/home/domain/repositories/home_repository.dart';
@@ -8,6 +9,7 @@ import 'package:omnipro_test/features/home/domain/usecases/retrieve_api_photos_u
 final GetIt sl = GetIt.instance;
 
 init() async {
+  registerConnectivity();
   registerDataSources();
   registerRepositories();
   registerUseCases();
@@ -15,11 +17,15 @@ init() async {
 }
 
 void registerBlocs() {
-  sl.registerFactory(() => HomeCubit(getApiPhotosUseCase: sl()));
+  sl.registerFactory(() => HomeCubit(
+        retrieveApiPhotosUseCase: sl(),
+        connectivity: sl(),
+      ));
 }
 
 void registerUseCases() {
-  sl.registerLazySingleton(() => GetApiPhotosUseCase(homeRepository: sl()));
+  sl.registerLazySingleton(
+      () => RetrieveApiPhotosUseCase(homeRepository: sl()));
 }
 
 void registerRepositories() {
@@ -29,4 +35,8 @@ void registerRepositories() {
 
 void registerDataSources() {
   sl.registerLazySingleton<HomeDataSource>(() => HomeDataSourceImpl());
+}
+
+void registerConnectivity() {
+  sl.registerLazySingleton<Connectivity>(() => Connectivity());
 }

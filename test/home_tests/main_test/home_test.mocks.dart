@@ -49,12 +49,12 @@ class _FakeEither_1<L, R> extends _i1.SmartFake implements _i3.Either<L, R> {
         );
 }
 
-/// A class which mocks [GetApiPhotosUseCase].
+/// A class which mocks [RetrieveApiPhotosUseCase].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockGetApiPhotosUseCase extends _i1.Mock
-    implements _i4.GetApiPhotosUseCase {
-  MockGetApiPhotosUseCase() {
+class MockRetrieveApiPhotosUseCase extends _i1.Mock
+    implements _i4.RetrieveApiPhotosUseCase {
+  MockRetrieveApiPhotosUseCase() {
     _i1.throwOnMissingStub(this);
   }
 

@@ -1,16 +1,17 @@
 # omnipro_test
 
-A new Flutter project.
+Prueba técnica de ingreso a Omni.Pro
 
-## Getting Started
+Versión de flutter utilizada: 3.7.7 stable
+Versión de dart utilizada: Dart 2.19.4 DevTools 2.20.1
 
-This project is a starting point for a Flutter application.
+## Descripción de la app:
 
-A few resources to get you started if this is your first Flutter project:
+- La aplicación consta de 1 vistas.
+- Si inicialmente no se pueden obtener los datos se muestra un mensaje de error.
+- Al hacer scroll hacía abajo y llegar a border, se obtendran otros 10 elementos.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Obvervaciones:
+
+- La variables no publicas se almacenaron en el archivo .env. Por cuestiones de la prueba este archivo de sube al repo.

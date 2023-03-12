@@ -31,7 +31,7 @@ class DataErrorPage extends StatelessWidget {
                 ),
                 children: const [
                   TextSpan(
-                    text: "Ocurrió un error al obtener los datos de usuario. ",
+                    text: "Ocurrió un error al obtener las fotos. ",
                   ),
                   TextSpan(
                     text: "Verifica tu conexión e intenta nuevamente.",

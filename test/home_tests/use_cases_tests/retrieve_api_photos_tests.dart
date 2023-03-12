@@ -4,28 +4,28 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:omnipro_test/core/errors/failures.dart';
 import 'package:omnipro_test/core/utils/common_constants.dart';
 import 'package:omnipro_test/core/utils/common_functions.dart';
-import 'package:omnipro_test/features/home/data/models/api_photo.dart';
 import 'package:omnipro_test/features/home/presentation/cubit/home_cubit.dart';
 import 'package:omnipro_test/features/home/data/models/retrieve_photos_response.dart';
 
 import '../main_test/home_test.mocks.dart';
 
-void getApiPhotosTests() {
+void retrieveApiPhotosTests() {
   group(
-    "Get api photos",
+    "Retrieve api photos",
     () {
       late HomeCubit homeCubit;
-      late MockGetApiPhotosUseCase mockGetApiPhotosUseCase;
+      late MockRetrieveApiPhotosUseCase mockRetrieveApiPhotosUseCase;
 
       setUp(() {
-        mockGetApiPhotosUseCase = MockGetApiPhotosUseCase();
-        homeCubit = HomeCubit(getApiPhotosUseCase: mockGetApiPhotosUseCase);
+        mockRetrieveApiPhotosUseCase = MockRetrieveApiPhotosUseCase();
+        homeCubit =
+            HomeCubit(retrieveApiPhotosUseCase: mockRetrieveApiPhotosUseCase);
       });
 
       test(
-        "Get api photos test (Success)",
+        "Retrieve api photos test (Success)",
         () async {
-          when(mockGetApiPhotosUseCase(any)).thenAnswer(
+          when(mockRetrieveApiPhotosUseCase(any)).thenAnswer(
             (_) async => Right(
               RetrievePhotosResponse(
                 apiPhotos: CommonConstants.testApiPhotos,
@@ -47,9 +47,9 @@ void getApiPhotosTests() {
       );
 
       test(
-        "Get api photos test (fail)",
+        "Retrieve api photos test (fail)",
         () async {
-          when(mockGetApiPhotosUseCase(any)).thenAnswer(
+          when(mockRetrieveApiPhotosUseCase(any)).thenAnswer(
             (_) async => Left(
               HomeFailure(message: "Error"),
             ),

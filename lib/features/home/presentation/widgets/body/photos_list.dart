@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:omnipro_test/core/utils/screen_size.dart';
 import 'package:omnipro_test/features/home/data/models/api_photo.dart';
-import 'package:omnipro_test/features/home/presentation/widgets/photo_item.dart';
+import 'package:omnipro_test/features/home/presentation/widgets/body/photo_item.dart';
 
 class PhotosList extends StatelessWidget {
   final List<ApiPhoto> photos;
