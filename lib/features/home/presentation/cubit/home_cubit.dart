@@ -61,7 +61,7 @@ class HomeCubit extends Cubit<HomeState> {
         if (event == ConnectivityResult.wifi ||
             event == ConnectivityResult.ethernet ||
             event == ConnectivityResult.mobile) {
-          onNetworkConnectionSucces();
+          onNetworkConnectionSuccess();
         } else {
           onNetworkConnectionFail();
         }
@@ -69,7 +69,7 @@ class HomeCubit extends Cubit<HomeState> {
     );
   }
 
-  void onNetworkConnectionSucces() async {
+  void onNetworkConnectionSuccess() async {
     if (state.photos.isEmpty) {
       await getInitialData();
       InAppNotification.show(
