@@ -1,5 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.omnipro_test">
+    
+    <uses-permission android:name="android.permission.INTERNET"/>
+
    <application
         android:label="omnipro_test"
         android:name="${applicationName}"

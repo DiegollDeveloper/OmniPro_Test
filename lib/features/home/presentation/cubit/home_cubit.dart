@@ -71,12 +71,14 @@ class HomeCubit extends Cubit<HomeState> {
 
   void onNetworkConnectionSuccess() async {
     if (state.photos.isEmpty) {
-      await getInitialData();
-      InAppNotification.show(
-        message: "Conexión restablecida",
-        type: NotificationType.success,
-        context: AppNavigator.state.context,
-      );
+      if (state.dataError) {
+        await getInitialData();
+        InAppNotification.show(
+          message: "Conexión restablecida",
+          type: NotificationType.success,
+          context: AppNavigator.state.context,
+        );
+      }
     } else if (!state.networkConnection) {
       InAppNotification.show(
         message: "Conexión restablecida",

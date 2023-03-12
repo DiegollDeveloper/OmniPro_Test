@@ -32,4 +32,4 @@ flutter:
 
   assets:
     - assets/gifs/loading.gif
-    - lib/.env
+    - .env
